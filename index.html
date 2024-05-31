@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a <br> <span>Random Password</span></h1>
+        <div class="display">
+            <input type="text" id="password" placeholder="Password">
+            <button onclick="copyPassword()"><img src="cp2.jpg" alt="" width="60" height="60"></button>
+        </div>
+        <button onclick="createPassword()"><img src="click.webp" alt=""> Generate Password</button>
+        
+    </div>
+
+    <script>
+        const passwordBox = document.getElementById("password");
+        const length = 12;
+
+        const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+        const number = "0123456789";
+        const symbol = "!@#$%^&*()<>?~`{}[];/";
+        const allChars = upperCase + lowerCase + number + symbol;
+        
+        function createPassword(){
+            let password = "";
+            //following function will add random values to the password initially initialized as NULL
+            password += upperCase[Math.floor(Math.random() * upperCase.length)];
+            password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            password += number[Math.floor(Math.random() * number.length)];
+            password += symbol[Math.floor(Math.random() * symbol.length)];
+
+            while(length > password.length){
+                password += allChars[Math.floor(Math.random() * allChars.length)];
+            }
+
+            // Shuffle the password to make the first four characters not predictable
+            password = shuffleString(password);
+
+            passwordBox.value = password;
+        }
+
+        // Function to shuffle a string
+        function shuffleString(str) {
+            const arr = str.split('');
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr.join('');
+        }
+
+            //to copy password
+        function copyPassword(){
+            passwordBox.select();
+            document.execCommand("copy");
+            alert("Password copied to clipboard");
+        }
+
+    </script>
+</body>
+</html>
