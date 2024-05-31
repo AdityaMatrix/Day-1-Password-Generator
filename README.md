@@ -1,4 +1,5 @@
 # Day-1-Password-Generator
+( https://adityamatrix.github.io/Day-1-Password-Generator/ )
 This is my first project using Javascript I have taken help from YouTube, from now onwards I will be learning javascript through a project based mode  where each day I will try to make projects using HTML,CSS And JS to work upon my  skills and to learn something new each day.
 
 This project is a simple web application that generates a random password with a specified length. The password includes upper case letters, lower case letters, numbers, and special characters. It also provides functionality to copy the generated password to the clipboard.
